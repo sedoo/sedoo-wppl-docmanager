@@ -31,6 +31,30 @@ while ( have_posts() ) : the_post();
 						the_content();
 					?>
 		        </section>
+				<section class="wrapper-content">
+					<h2>Files</h2>
+					<?php
+						if( have_rows('fichiers') ): ?>
+					
+						<?php while( have_rows('fichiers') ): the_row(); 
+					
+							$file = get_sub_field('fichier');
+							?>
+							<article class="fileList" style="display:flex;align-items:center;padding:0 10px;">
+								<figure style="width:25px;margin-right:10px;">
+									<img src="<?php echo $file['icon']; ?>"> 
+								</figure>
+								<h4>
+									<a href="<?php echo $file['url']; ?>"><?php echo $file['title']; ?></a><br>
+									<small><?php echo $file['filename']; ?></small>
+								</h4>
+							</article>
+					
+						<?php endwhile; ?>
+					
+										
+					<?php endif; ?>
+				</section>
 
 				<footer>
 					<span class="icon-user"></span><?php the_author();?>

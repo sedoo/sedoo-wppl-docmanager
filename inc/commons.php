@@ -26,4 +26,3 @@ function sedoo_docmanager_show_categories($categories) {
 <?php
     } 
 }
-
