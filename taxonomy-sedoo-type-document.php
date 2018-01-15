@@ -47,7 +47,9 @@ get_template_part( 'template-parts/header-content', 'archive' );
                         ?>        
 
                     </header>
-					
+					<?php
+					if ( ! post_password_required() ) {
+					?>
 					<section>
 					<?php
 						if( have_rows('fichiers') ): ?>
@@ -71,7 +73,9 @@ get_template_part( 'template-parts/header-content', 'archive' );
 										
 						<?php endif; ?>
 					</section>
-
+					<?php
+					}
+					?>
 
                     <section>
                     <?php if($post->post_content != "") : ?>			

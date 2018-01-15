@@ -31,6 +31,9 @@ while ( have_posts() ) : the_post();
 						the_content();
 					?>
 		        </section>
+				<?php
+				if ( ! post_password_required() ) {
+				?>
 				<section class="wrapper-content">
 					<h2>Files</h2>
 					<?php
@@ -55,6 +58,9 @@ while ( have_posts() ) : the_post();
 										
 					<?php endif; ?>
 				</section>
+				<?php
+				}
+				?>
 
 				<footer>
 					<span class="icon-user"></span><?php the_author();?>
