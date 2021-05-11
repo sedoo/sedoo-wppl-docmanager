@@ -19,7 +19,7 @@ get_template_part( 'template-parts/header-content', 'archive' );
 			<?php
 			if ( have_posts() ) : ?>
 
-			<section role="listNews" class="posts">
+			<section class="post-wrapper sedoo_blocks_listearticle">
 			<?php
                 while ( have_posts() ) : the_post();
                 global $post;
@@ -27,8 +27,7 @@ get_template_part( 'template-parts/header-content', 'archive' );
 				$medias = get_attached_media( '' );
 				
 				?>
-				<div class="post-container">
-                <article role="embed-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
                     <header>
                         <h3>
                         <a href="<?php the_permalink(); ?>">
@@ -47,6 +46,13 @@ get_template_part( 'template-parts/header-content', 'archive' );
                         ?>        
 
                     </header>
+					<section>
+                    <?php if($post->post_content != "") : ?>			
+                    <div class="post-excerpt">	    		            			            	                                                                                            
+                            <?php the_excerpt(); ?>
+                        </div>
+                        <?php endif; ?>
+                    </section>
 					<?php
 					if ( ! post_password_required() ) {
 					?>
@@ -63,9 +69,9 @@ get_template_part( 'template-parts/header-content', 'archive' );
 									<figure style="width:25px;margin-right:10px;">
 										<img src="<?php echo $file['icon']; ?>"> 
 									</figure>
-									<h4>
+									<p>
 										<a href="<?php echo $file['url']; ?>"><?php echo $file['title']; ?></a>
-									</h4>
+									</p>
 								</article>	
 						
 							<?php endwhile; ?>
@@ -75,30 +81,8 @@ get_template_part( 'template-parts/header-content', 'archive' );
 					</section>
 					<?php
 					}
-					?>
-
-                    <section>
-                    <?php if($post->post_content != "") : ?>			
-                    <div class="post-excerpt">	    		            			            	                                                                                            
-                            <?php //the_excerpt(); ?>
-                        </div>
-                        <?php endif; ?>
-                    </section>
-                    <footer>
-                        <?php sedoo_docmanager_show_categories($categories);?>
-                        
-                        <?php theme_aeris_meta(); ?>
-                    </footer>
+					?>                    
                 </article>
-				<?php
-					// get_template_part( 'template-parts/content', get_post_format() );
-
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-					?>
-				</div>
 				<?php
 				endwhile; // End of the loop.
 				?>				
