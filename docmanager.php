@@ -4,7 +4,7 @@
 * Plugin URI : https://github.com/sedoo/sedoo-wppl-docmanager
 * Description: Plugin pour gérer des documents
 * Author: Pierre VERT & Nicolas Gruwe
-* Version: 0.1.2
+* Version: 0.2.0
 * GitHub Plugin URI: sedoo/sedoo-wppl-docmanager
 * GitHub Branch:     master
 */
